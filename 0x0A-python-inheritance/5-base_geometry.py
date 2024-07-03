@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Defines an empty clas"""
+"""This module Defines an empty clas"""
 
 
 class BaseGeometry():
