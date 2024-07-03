@@ -13,4 +13,3 @@ class MyList(list):
         Assumes all elements of the list are of type int.
         """
         print(sorted(self))
-
