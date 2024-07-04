@@ -5,7 +5,7 @@ inherits from the BaseGeometry class.
 """
 
 
-class BaseGeometry:
+class BaseGeometry():
     """
     Represents a BaseGeometry class.
     """
