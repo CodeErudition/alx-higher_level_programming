@@ -20,4 +20,4 @@ def write_file(filename="", text=""):
     """
     with open(filename, "w", encoding="utf-8") as w_file:
         char_count = w_file.write(text)
-    return(char_count)
+    return (char_count)
