@@ -15,7 +15,6 @@ def print_stats(total_size, status_codes):
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
             print("{}: {}".format(code, status_codes[code]))
-    print()
 
 
 total_size = 0
