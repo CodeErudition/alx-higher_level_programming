@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a class Rectangle that inherits from Base
+This module defines a class Rectangle that inherits from Base.
 """
 from models.base import Base
 
@@ -49,7 +49,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, h_value):
-        self__height = h_value
+        self.__height = h_value
 
     @property
     def x(self):
@@ -57,7 +57,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, x_value):
-            self.__x = x_value
+        self.__x = x_value
 
     @property
     def y(self):
@@ -65,4 +65,4 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, y_value):
-    self.__y = y_value
+        self.__y = y_value
