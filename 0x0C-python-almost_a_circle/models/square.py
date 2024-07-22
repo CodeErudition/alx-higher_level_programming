@@ -38,3 +38,33 @@ class Square(Rectangle):
         """
         return ("[Square] ({}) {}/{} - {}".format(self.id,
                 self.x, self.y, self.width))
+
+    @property
+    def size(self):
+        return self.__width
+
+    @size.setter
+    def size(self, w_value):
+        self.validator("width", w_value)
+        self.__width = w_value
+        self.__height = w_value
+
+    @property
+    def width(self):
+        return self.__width
+
+    @width.setter
+    def width(self, w_value):
+        self.validator("width", w_value)
+        self.__width = w_value
+        self.__height = w_value
+
+    @property
+    def height(self):
+        return self.__height
+
+    @height.setter
+    def height(self, h_value):
+        self.validator("height", h_value)
+        self.__width = h_value
+        self.__height = h_value
