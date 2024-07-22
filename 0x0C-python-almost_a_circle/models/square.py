@@ -68,3 +68,27 @@ class Square(Rectangle):
         self.validator("height", h_value)
         self.__width = h_value
         self.__height = h_value
+
+    def update(self, *args, **kwargs):
+        """
+        Updates the attributes of the Square instance.
+
+        Args:
+            *args: A list of arguments. No-keyworded arguments.
+                1st argument should be the id attribute.
+                2nd argument should be the size attribute.
+                3rd argument should be the x attribute.
+                4th argument should be the y attribute.
+            **kwargs: A dictionary of key/value arguments. Keyworded
+                        arguments.Each key in this dictionary
+                        represents an attribute to the instance.
+        """
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for i, value in enumerate(args):
+                if i < len(attrs):
+                    setattr(self, attrs[i], value)
+        else:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
