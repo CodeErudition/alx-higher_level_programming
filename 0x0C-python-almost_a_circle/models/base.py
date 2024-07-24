@@ -4,6 +4,7 @@ This module defines a class Base, which will be the base of
 all other classes in this project.
 """
 import json
+import os
 
 
 class Base():
@@ -105,3 +106,21 @@ class Base():
 
         o_dummy.update(**dictionary)
         return o_dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns a list of instances from a file.
+
+        Returns:
+            list: A list of instances.
+        """
+        filename = cls.__name__ + ".json"
+        if not os.path.exists(filename):
+            return []
+
+        with open(filename, "r", encoding="utf-8") as r_file:
+            json_string = r_file.read()
+
+        list_dictionaries = cls.from_json_string(json_string)
+        return [cls.create(**dictionary) for dictionary in list_dictionaries]
