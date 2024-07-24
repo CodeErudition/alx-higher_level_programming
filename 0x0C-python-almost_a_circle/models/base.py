@@ -83,3 +83,25 @@ class Base():
         if json_string is None or json_string == "":
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Returns an instance with all attributes already set.
+
+        Args:
+            **dictionary: A dictionary of attributes to set on the instance.
+
+        Returns:
+            An instance of the class with attributes set according to
+            dictionary.
+        """
+        if cls.__name__ == "Rectangle":
+            o_dummy = cls(1, 1)
+        elif cls.___name__ == "Square":
+            o_dummy = cls(1)
+        else:
+            raise TypeError("This class type does not exit")
+
+        o_dummy.update(**dictionary)
+        return o_dummy
