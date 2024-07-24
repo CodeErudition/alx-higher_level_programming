@@ -98,7 +98,7 @@ class Base():
         """
         if cls.__name__ == "Rectangle":
             o_dummy = cls(1, 1)
-        elif cls.___name__ == "Square":
+        elif cls.__name__ == "Square":
             o_dummy = cls(1)
         else:
             raise TypeError("This class type does not exit")
