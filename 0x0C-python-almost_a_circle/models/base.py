@@ -5,6 +5,7 @@ all other classes in this project.
 """
 import json
 import os
+import csv
 
 
 class Base():
@@ -124,3 +125,58 @@ class Base():
 
         list_dictionaries = cls.from_json_string(json_string)
         return [cls.create(**dictionary) for dictionary in list_dictionaries]
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + ".json"
+        if not os.path.exists(filename):
+            return []
+
+        with open(filename, "r", encoding="utf-8") as r_file:
+            json_string = r_file.read()
+
+        list_dictionaries = cls.from_json_string(json_string)
+        return [cls.create(**dictionary) for dictionary in list_dictionaries]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            if cls.__name__ == "Rectangle":
+                for obj in list_objs:
+                    writer.writerow([obj.id, obj.width,
+                                    obj.height, obj.x, obj.y])
+            elif cls.__name__ == "Square":
+                for obj in list_objs:
+                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + ".csv"
+        if not os.path.exists(filename):
+            return []
+
+        with open(filename, 'r', newline='') as csv_file:
+            reader = csv.reader(csv_file)
+            list_dicts = []
+            if cls.__name__ == "Rectangle":
+                for row in reader:
+                    dict_obj = {
+                        "id": int(row[0]),
+                        "width": int(row[1]),
+                        "height": int(row[2]),
+                        "x": int(row[3]),
+                        "y": int(row[4])
+                    }
+                    list_dicts.append(dict_obj)
+            elif cls.__name__ == "Square":
+                for row in reader:
+                    dict_obj = {
+                        "id": int(row[0]),
+                        "size": int(row[1]),
+                        "x": int(row[2]),
+                        "y": int(row[3])
+                    }
+                    list_dicts.append(dict_obj)
+            return [cls.create(**d) for d in list_dicts]
