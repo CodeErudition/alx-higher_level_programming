@@ -6,6 +6,7 @@ all other classes in this project.
 import json
 import os
 import csv
+import turtle
 
 
 class Base():
@@ -180,3 +181,46 @@ class Base():
                     }
                     list_dicts.append(dict_obj)
             return [cls.create(**d) for d in list_dicts]
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Opens a window and draws all the Rectangles and Squares.
+
+        Args:
+            list_rectangles (list): A list of Rectangle instances.
+            list_squares (list): A list of Square instances.
+        """
+        screen = turtle.Screen()
+        screen.title("CodeEruditon: Rectangles and Squares Drawing")
+        pen = turtle.Turtle()
+        pen.speed(1)
+
+        def draw_rectangle(rect):
+            pen.penup()
+            pen.goto(rect.x, rect.y)
+            pen.pendown()
+            pen.forward(rect.width)
+            pen.left(90)
+            pen.forward(rect.height)
+            pen.left(90)
+            pen.forward(rect.width)
+            pen.left(90)
+            pen.forward(rect.height)
+            pen.left(90)
+
+        def draw_square(square):
+            pen.penup()
+            pen.goto(square.x, square.y)
+            pen.pendown()
+            for _ in range(4):
+                pen.forward(square.size)
+                pen.left(90)
+
+        for rect in list_rectangles:
+            draw_rectangle(rect)
+
+        for square in list_squares:
+            draw_square(square)
+
+        turtle.done()
